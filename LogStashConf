@@ -1,0 +1,45 @@
+input {
+  beats {
+    port => 5443
+    ssl => false
+  }
+
+
+
+filter {
+  if "sfsf_HOlog" in [tags] {
+      grok {
+match => { "message" => ["%{TIMESTAMP_ISO8601:logdate}(?<msg>((?!Stacktrace=).)*)(Stacktrace=(?<Stacktrace>.*))?"] }
+      }
+
+date {
+        match => [ "logdate" , "ISO8601" ]
+        timezone => ["UTC"]
+      }
+kv {
+      source => "msg"
+      field_split_pattern => " "
+      trim_key => " "
+      trim_value => " "
+      }
+mutate {
+       convert => {
+          "SizeInMB" => "float"
+          "SizeInB" => "integer"
+       }
+     }
+      }
+}
+
+output{
+  if "sfsf_HOlog" in [tags]{
+     elasticsearch {
+        hosts => ["pc21perfapp03", "pc21perfapp04", "pc21perfapp05"]
+        manage_template => false
+        index => "humongousobject_logs"
+        document_type => "humongousobject_logs"
+        }
+
+     stdout { codec => rubydebug }
+     }
+}
