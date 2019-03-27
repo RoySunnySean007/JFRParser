@@ -34,7 +34,7 @@ mutate {
 output{
   if "sfsf_HOlog" in [tags]{
      elasticsearch {
-        hosts => ["pc21perfapp03", "pc21perfapp04", "pc21perfapp05"]
+        hosts => ["XXX", "XXX", "XXX"]
         manage_template => false
         index => "humongousobject_logs"
         document_type => "humongousobject_logs"
