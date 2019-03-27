@@ -1,0 +1,6 @@
+- paths:
+  - /dev/elastic/rzhang/holog/humongousObject.log*
+  tags: [sfsf_HOlog]
+  multiline.pattern: '^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+  multiline.negate: true
+  multiline.match: after
