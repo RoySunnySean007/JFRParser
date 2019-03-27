@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <RollingRandomAccessFile name="humongous" fileName="humongousObject.log" filePattern="humongousObject.log.%d{yyyy-MM-dd}" append="true">
+      <PatternLayout>
+        <Pattern>%msg%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="5 GB"/>
+      </Policies>
+    </RollingRandomAccessFile>
+    <RollingRandomAccessFile name="jfrparser" fileName="jfrparser.log" filePattern="jfrparser.log.%d{yyyy-MM-dd}" append="true">
+      <PatternLayout>
+        <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level - %msg%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="5 GB"/>
+      </Policies>
+    </RollingRandomAccessFile>
+  </Appenders>
+   <Loggers>
+    <Logger name="humongousObject_log" additivity="false">
+      <AppenderRef ref="humongous"/>
+    </Logger>
+    <Logger name="jfrparser_log" additivity="false">
+      <AppenderRef ref="jfrparser"/>
+    </Logger>
+    <Root level="INFO">
+    </Root>
+  </Loggers>
+</Configuration>
