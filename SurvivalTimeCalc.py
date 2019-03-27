@@ -66,7 +66,7 @@ def main(jfrlogfile, gclogfolder, codeVersion):
             tmp['Servername'] = jfrfilename.split('_')[1]
             tmp['Hostname'] = jfrfilename.split('_')[2]
             tmp['TomcatPID'] = int(jfrfilename.split('_')[3].split('.')[0])
-            tmp['CodeVersion'] = 'B1902'
+            tmp['CodeVersion'] = 'XXX'
             tmp['Liveness'] = liveness
 
             haveSameSurvivalTimeInSecond = False
