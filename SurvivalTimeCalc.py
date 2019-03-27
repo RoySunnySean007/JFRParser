@@ -139,4 +139,4 @@ def main(jfrlogfile, gclogfolder, codeVersion):
 
 
 if __name__ == '__main__':
-    main('/Users/i075706/PycharmProjects/HelloWorld/calcPre_release/humongousObject.log', '/Users/i075706/PycharmProjects/HelloWorld/calcPre_release', 'B1902')
+    main('humongousObject.log', 'XXX', 'XXX')
